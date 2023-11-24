@@ -11,6 +11,6 @@ class ArticleRepositoryImpl @Inject constructor(
     private val localDataSource: ArticleDao
 ) : ArticleRepository {
     override suspend fun getArticles(): Response<ArticlesResponse> {
-        TODO("Not yet implemented")
+        return spaceFlightApi.getArticles()
     }
 }

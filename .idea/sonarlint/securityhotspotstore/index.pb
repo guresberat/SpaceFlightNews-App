@@ -39,8 +39,6 @@ L
 
 .gitignore,a\5\a5cc2925ca8258af241be7e5b0381edf30266302
 Å
-Q.idea/sonarlint/securityhotspotstore/0/0/006624b8f8036a7ebda437c030d142f5ea9915ef,f\0\f0d529e900b470d0ccafd30d64f488e943763fce
-Å
 Q.idea/sonarlint/securityhotspotstore/0/7/0712df971a99ac4d2fccb8e0fb19f377f3374cca,2\e\2e86fb07c772c8a1f877dd80522b653bbbb01e65
 w
 G.idea/sonarlint/issuestore/9/e/9e08934d811afe28fbc77aaa3c0d747b94348db9,0\1\0105d5a774c76db833eb83cbebde54a8abef1599
@@ -70,8 +68,6 @@ Iapp/src/test/java/com/guresberatcan/spaceflightnewsapp/ExampleUnitTest.kt,6\e\
 Q.idea/sonarlint/securityhotspotstore/d/2/d2a4383452aad84a18429a5844d31330a012a9e6,7\f\7fcac164c7a46b8fc6411ea93226c884af6044db
 ]
 -.idea/sonarlint/securityhotspotstore/index.pb,8\8\88a9255124c95bdc913197c120a8d560edc59c8e
-Ñ
-Tapp/src/main/java/com/guresberatcan/spaceflightnewsapp/ui/fragments/FirstFragment.kt,3\f\3f0e8a6b64448a36b1d57395605ad48036e0aa8f
 Ö
 Uapp/src/main/java/com/guresberatcan/spaceflightnewsapp/ui/fragments/SecondFragment.kt,b\e\bed057d84b0d0bcc5b1b66324432c1379dabdf3f
 Ç
@@ -88,12 +84,8 @@ Yapp/src/main/java/com/guresberatcan/spaceflightnewsapp/ui/fragments/FlightListF
 Papp/src/main/java/com/guresberatcan/spaceflightnewsapp/network/SpaceFlightAPI.kt,9\a\9a4ea54c73cdde0ae4b04cb7b186c37d78581bb8
 Ö
 Uapp/src/main/java/com/guresberatcan/spaceflightnewsapp/data/model/ArticlesResponse.kt,8\9\89c7dd1a9a9aa432a9e46705c93c050f9277ac9c
-z
-Japp/src/main/java/com/guresberatcan/spaceflightnewsapp/data/model/Event.kt,5\e\5e7efaea6bb9a66d685b78f2ca69007a8b20c203
 |
 Lapp/src/main/java/com/guresberatcan/spaceflightnewsapp/data/model/Launche.kt,4\0\40d9f7f0a968e08a72cbe6ea5e5d957eac1df663
-{
-Kapp/src/main/java/com/guresberatcan/spaceflightnewsapp/data/model/Result.kt,a\a\aaff47688edbff7b20bf0822f8a355f89cbb5a21
 ã
 [app/src/main/java/com/guresberatcan/spaceflightnewsapp/data/repository/ArticleRepository.kt,2\0\20319fe6b44d216aaf335add5afae8e9d567c8a9
 è
@@ -110,3 +102,13 @@ Lapp/src/main/java/com/guresberatcan/spaceflightnewsapp/data/model/Article.kt,7
 Zapp/src/main/java/com/guresberatcan/spaceflightnewsapp/ui/viewmodel/FlightListViewModel.kt,0\e\0ed73d04a6f36cde5c35640c8888ca31b2eb329b
 ç
 ]app/src/main/java/com/guresberatcan/spaceflightnewsapp/ui/viewmodel/ArticleDetailViewModel.kt,d\6\d69eac57272a0466d70cae9fce490b1438209bde
+â
+Yapp/src/main/java/com/guresberatcan/spaceflightnewsapp/data/usecase/GetArticlesUseCase.kt,1\e\1e30ef0b892a3c9fc279393b46326dc909299975
+x
+Happ/src/main/java/com/guresberatcan/spaceflightnewsapp/utils/Resource.kt,4\3\4347251a00d4558a8049334c4563529ac0fb0112
+á
+Wapp/src/main/java/com/guresberatcan/spaceflightnewsapp/ui/adapter/ArticleListAdapter.kt,7\d\7dabcc5e57e6dff1aadbe1a7367983ad1ecb45c9
+ä
+Zapp/src/main/java/com/guresberatcan/spaceflightnewsapp/di/module/RemoteDataSourceModule.kt,1\8\184b683b234a784994a2b4b5f41d372cfd7361be
+Ä
+Papp/src/main/java/com/guresberatcan/spaceflightnewsapp/utils/IntentExtensions.kt,8\c\8c7a9bcbffbe637e85d5b0084b727236b62fd3e5

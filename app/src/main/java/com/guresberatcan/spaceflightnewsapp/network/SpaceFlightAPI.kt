@@ -9,7 +9,7 @@ interface SpaceFlightAPI {
 
     @GET("articles")
     suspend fun getArticles(
-        @Query("_start")
-        articlesToSkip: Int = 0
+        @Query("limit")
+        articlesToSkip: Int = 50
     ): Response<ArticlesResponse>
 }
