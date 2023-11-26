@@ -90,6 +90,12 @@ dependencies {
     //Hilt
     implementation("com.google.dagger:hilt-android:2.44")
     kapt("com.google.dagger:hilt-android-compiler:2.44")
+    implementation("androidx.hilt:hilt-work:1.1.0")
+    kapt("androidx.hilt:hilt-compiler:1.1.0")
+
+    //WorkManager
+    val work_version = "2.8.1"
+    implementation("androidx.work:work-runtime-ktx:$work_version")
 
     //Gson
     implementation ("com.google.code.gson:gson:2.10.1")
