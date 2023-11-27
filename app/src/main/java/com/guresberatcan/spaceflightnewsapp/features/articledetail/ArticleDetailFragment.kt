@@ -10,22 +10,22 @@ import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.fragment.findNavController
 import com.bumptech.glide.Glide
 import com.guresberatcan.spaceflightnewsapp.R
-import com.guresberatcan.spaceflightnewsapp.databinding.FragmentSecondBinding
+import com.guresberatcan.spaceflightnewsapp.databinding.FragmentArticleDetailBinding
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
 class ArticleDetailFragment : Fragment(R.layout.fragment_article_detail) {
 
-    private var _binding: FragmentSecondBinding? = null
+    private var _binding: FragmentArticleDetailBinding? = null
     private val viewModel: ArticleDetailViewModel by viewModels()
 
-    private val binding : FragmentSecondBinding get() = _binding!!
+    private val binding : FragmentArticleDetailBinding get() = _binding!!
 
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        _binding = FragmentSecondBinding.bind(view)
+        _binding = FragmentArticleDetailBinding.bind(view)
         initObservers()
         viewModel.getArticleData(requireArguments().getInt("id"))
 

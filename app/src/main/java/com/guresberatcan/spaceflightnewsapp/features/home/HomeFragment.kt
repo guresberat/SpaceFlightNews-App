@@ -10,9 +10,9 @@ import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.fragment.findNavController
 import com.guresberatcan.spaceflightnewsapp.R
-import com.guresberatcan.spaceflightnewsapp.databinding.FragmentFlightListBinding
 import com.guresberatcan.spaceflightnewsapp.features.home.adapter.ArticleListAdapter
 import com.guresberatcan.data.util.parcelable
+import com.guresberatcan.spaceflightnewsapp.databinding.FragmentHomeBinding
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 import java.util.Timer
@@ -23,14 +23,14 @@ import java.util.TimerTask
 class HomeFragment : Fragment(R.layout.fragment_home) {
 
     private val viewModel: HomeViewModel by viewModels()
-    private var _binding: FragmentFlightListBinding? = null
-    private val binding : FragmentFlightListBinding get() = _binding!!
+    private var _binding: FragmentHomeBinding? = null
+    private val binding : FragmentHomeBinding get() = _binding!!
     private var articleAdapter = ArticleListAdapter()
     private lateinit var timer : Timer
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        _binding = FragmentFlightListBinding.bind(view)
+        _binding = FragmentHomeBinding.bind(view)
         initObservers()
         initViews()
         initializeTimer()
