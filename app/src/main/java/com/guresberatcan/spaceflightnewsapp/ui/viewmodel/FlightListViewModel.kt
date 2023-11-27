@@ -4,11 +4,11 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.guresberatcan.spaceflightnewsapp.data.model.Article
-import com.guresberatcan.spaceflightnewsapp.data.usecase.FilterUseCase
-import com.guresberatcan.spaceflightnewsapp.data.usecase.GetArticlesUseCase
-import com.guresberatcan.spaceflightnewsapp.data.usecase.UpdateArticleUseCase
-import com.guresberatcan.spaceflightnewsapp.utils.Resource
+import com.guresberatcan.domain.model.Article
+import com.guresberatcan.domain.usecase.FilterUseCase
+import com.guresberatcan.domain.usecase.GetArticlesUseCase
+import com.guresberatcan.domain.usecase.UpdateArticleUseCase
+import com.guresberatcan.domain.utils.Resource
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.channels.BufferOverflow
@@ -20,15 +20,15 @@ import javax.inject.Inject
 
 @HiltViewModel
 class FlightListViewModel @Inject constructor(
-    private val getArticlesUseCase: GetArticlesUseCase,
-    private val updateArticleUseCase: UpdateArticleUseCase,
-    private val filterUseCase: FilterUseCase
+    private val getArticlesUseCase: com.guresberatcan.domain.usecase.GetArticlesUseCase,
+    private val updateArticleUseCase: com.guresberatcan.domain.usecase.UpdateArticleUseCase,
+    private val filterUseCase: com.guresberatcan.domain.usecase.FilterUseCase
 ) : ViewModel() {
 
-    val articlesSharedFlow: SharedFlow<Resource<List<Article>>>
+    val articlesSharedFlow: SharedFlow<com.guresberatcan.domain.utils.Resource<List<com.guresberatcan.domain.model.Article>>>
         get() = _articlesSharedFlow
     private val _articlesSharedFlow =
-        MutableSharedFlow<Resource<List<Article>>>(
+        MutableSharedFlow<com.guresberatcan.domain.utils.Resource<List<com.guresberatcan.domain.model.Article>>>(
             replay = 1,
             onBufferOverflow = BufferOverflow.DROP_OLDEST
         )
@@ -64,7 +64,7 @@ class FlightListViewModel @Inject constructor(
                 false
             }
             filterUseCase(searchQuery).collect {
-                _articlesSharedFlow.emit(Resource.Success(it))
+                _articlesSharedFlow.emit(com.guresberatcan.domain.utils.Resource.Success(it))
             }
         }
     }

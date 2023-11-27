@@ -8,15 +8,15 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.guresberatcan.spaceflightnewsapp.R
-import com.guresberatcan.spaceflightnewsapp.data.model.Article
+import com.guresberatcan.domain.model.Article
 import com.guresberatcan.spaceflightnewsapp.databinding.ItemArticleListBinding
 
 class ArticleListAdapter :
-    ListAdapter<Article, ArticleListAdapter.CustomViewHolder>(SampleItemDiffCallback()) {
+    ListAdapter<com.guresberatcan.domain.model.Article, ArticleListAdapter.CustomViewHolder>(SampleItemDiffCallback()) {
 
-    var itemClickListener: ((item: Article) -> Unit)? = null
+    var itemClickListener: ((item: com.guresberatcan.domain.model.Article) -> Unit)? = null
 
-    var favouriteClickedListener: ((item: Article) -> Unit)? = null
+    var favouriteClickedListener: ((item: com.guresberatcan.domain.model.Article) -> Unit)? = null
 
     override fun onCreateViewHolder(parent: ViewGroup, position: Int): CustomViewHolder {
         val binding =
@@ -32,7 +32,7 @@ class ArticleListAdapter :
 
     inner class CustomViewHolder(private val itemBinding: ItemArticleListBinding) :
         RecyclerView.ViewHolder(itemBinding.root) {
-        fun bindTo(article: Article) {
+        fun bindTo(article: com.guresberatcan.domain.model.Article) {
             with(itemBinding) {
                 articleTitle.text = article.title
                 articleSummary.text = article.summary
@@ -57,12 +57,12 @@ class ArticleListAdapter :
         }
     }
 
-    class SampleItemDiffCallback : DiffUtil.ItemCallback<Article>() {
-        override fun areItemsTheSame(oldItem: Article, newItem: Article): Boolean {
+    class SampleItemDiffCallback : DiffUtil.ItemCallback<com.guresberatcan.domain.model.Article>() {
+        override fun areItemsTheSame(oldItem: com.guresberatcan.domain.model.Article, newItem: com.guresberatcan.domain.model.Article): Boolean {
             return oldItem.id == newItem.id
         }
 
-        override fun areContentsTheSame(oldItem: Article, newItem: Article): Boolean =
+        override fun areContentsTheSame(oldItem: com.guresberatcan.domain.model.Article, newItem: com.guresberatcan.domain.model.Article): Boolean =
             oldItem == newItem
 
     }

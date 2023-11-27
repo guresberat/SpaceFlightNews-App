@@ -1,7 +1,7 @@
 package com.guresberatcan.spaceflightnewsapp.di.module
 
 import com.google.gson.GsonBuilder
-import com.guresberatcan.spaceflightnewsapp.network.SpaceFlightAPI
+import com.guresberatcan.data.network.SpaceFlightAPI
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn

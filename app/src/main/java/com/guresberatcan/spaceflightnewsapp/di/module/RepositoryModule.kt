@@ -1,9 +1,9 @@
 package com.guresberatcan.spaceflightnewsapp.di.module
 
-import com.guresberatcan.spaceflightnewsapp.data.dao.ArticleDao
-import com.guresberatcan.spaceflightnewsapp.data.repository.ArticleRepository
-import com.guresberatcan.spaceflightnewsapp.data.repository.ArticleRepositoryImpl
-import com.guresberatcan.spaceflightnewsapp.network.SpaceFlightAPI
+import com.guresberatcan.data.repository.ArticleRepositoryImpl
+import com.guresberatcan.data.dao.ArticleDao
+import com.guresberatcan.data.network.SpaceFlightAPI
+import com.guresberatcan.domain.repository.ArticleRepository
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -19,5 +19,6 @@ object RepositoryModule {
     fun provideRepository(
         spaceFlightAPI: SpaceFlightAPI,
         articleDao: ArticleDao
-    ): ArticleRepository = ArticleRepositoryImpl(spaceFlightAPI, articleDao)
+    ): ArticleRepository =
+        ArticleRepositoryImpl(spaceFlightAPI, articleDao)
 }

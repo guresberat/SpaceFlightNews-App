@@ -10,7 +10,7 @@ import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.fragment.findNavController
 import com.bumptech.glide.Glide
 import com.guresberatcan.spaceflightnewsapp.R
-import com.guresberatcan.spaceflightnewsapp.data.model.Article
+import com.guresberatcan.domain.model.Article
 import com.guresberatcan.spaceflightnewsapp.databinding.FragmentSecondBinding
 import com.guresberatcan.spaceflightnewsapp.ui.viewmodel.ArticleDetailViewModel
 import dagger.hilt.android.AndroidEntryPoint
@@ -51,7 +51,7 @@ class SecondFragment : Fragment(R.layout.fragment_second) {
         }
     }
 
-    private fun setViewData(article: Article) {
+    private fun setViewData(article: com.guresberatcan.domain.model.Article) {
         with(binding) {
             Glide.with(requireActivity()).load(article.imageUrl)
                 .into(expandedImage)

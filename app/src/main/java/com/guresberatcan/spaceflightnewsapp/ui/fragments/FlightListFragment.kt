@@ -1,9 +1,7 @@
 package com.guresberatcan.spaceflightnewsapp.ui.fragments
 
 import android.os.Bundle
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
 import androidx.appcompat.widget.SearchView
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
@@ -13,11 +11,9 @@ import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.fragment.findNavController
 import com.guresberatcan.spaceflightnewsapp.R
 import com.guresberatcan.spaceflightnewsapp.databinding.FragmentFlightListBinding
-import com.guresberatcan.spaceflightnewsapp.databinding.FragmentSecondBinding
 import com.guresberatcan.spaceflightnewsapp.ui.adapter.ArticleListAdapter
 import com.guresberatcan.spaceflightnewsapp.ui.viewmodel.FlightListViewModel
-import com.guresberatcan.spaceflightnewsapp.utils.Resource
-import com.guresberatcan.spaceflightnewsapp.utils.parcelable
+import com.guresberatcan.data.util.parcelable
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 import java.util.Timer
@@ -94,13 +90,13 @@ class FlightListFragment : Fragment(R.layout.fragment_flight_list) {
                 launch {
                     viewModel.articlesSharedFlow.collect {
                         when (it) {
-                            is Resource.Success -> {
+                            is com.guresberatcan.domain.utils.Resource.Success -> {
                                 binding.recyclerview.apply {
                                     articleAdapter.submitList(it.data)
                                 }
                             }
 
-                            is Resource.Error -> {
+                            is com.guresberatcan.domain.utils.Resource.Error -> {
                                 //Handle error
                             }
                         }
