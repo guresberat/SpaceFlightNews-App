@@ -7,19 +7,19 @@
 
     <fragment
         android:id="@+id/FirstFragment"
-        android:name="com.guresberatcan.spaceflightnewsapp.ui.fragments.FlightListFragment"
+        android:name="com.guresberatcan.spaceflightnewsapp.features.home.HomeFragment"
         android:label="@string/first_fragment_label"
-        tools:layout="@layout/fragment_flight_list">
+        tools:layout="@layout/fragment_home">
 
         <action
             android:id="@+id/action_FirstFragment_to_SecondFragment"
-            app:destination="@id/SecondFragment" />
+            app:destination="@id/ArticleDetailFragment" />
     </fragment>
     <fragment
-        android:id="@+id/SecondFragment"
-        android:name="com.guresberatcan.spaceflightnewsapp.ui.fragments.SecondFragment"
+        android:id="@+id/ArticleDetailFragment"
+        android:name="com.guresberatcan.spaceflightnewsapp.features.articledetail.ArticleDetailFragment"
         android:label="@string/second_fragment_label"
-        tools:layout="@layout/fragment_second">
+        tools:layout="@layout/fragment_article_detail">
 
         <action
             android:id="@+id/action_SecondFragment_to_FirstFragment"

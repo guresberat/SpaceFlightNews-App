@@ -1,14 +1,7 @@
-package com.guresberatcan.spaceflightnewsapp.ui.viewmodel
+package com.guresberatcan.spaceflightnewsapp.features.home
 
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.guresberatcan.domain.model.Article
-import com.guresberatcan.domain.usecase.FilterUseCase
-import com.guresberatcan.domain.usecase.GetArticlesUseCase
-import com.guresberatcan.domain.usecase.UpdateArticleUseCase
-import com.guresberatcan.domain.utils.Resource
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.channels.BufferOverflow
@@ -19,7 +12,7 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
-class FlightListViewModel @Inject constructor(
+class HomeViewModel @Inject constructor(
     private val getArticlesUseCase: com.guresberatcan.domain.usecase.GetArticlesUseCase,
     private val updateArticleUseCase: com.guresberatcan.domain.usecase.UpdateArticleUseCase,
     private val filterUseCase: com.guresberatcan.domain.usecase.FilterUseCase

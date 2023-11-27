@@ -28,9 +28,9 @@ object RemoteDataSourceModule {
         return retrofit.build().create(SpaceFlightAPI::class.java)
     }
 
-    val logging = HttpLoggingInterceptor()
-    val level = logging.setLevel(HttpLoggingInterceptor.Level.BODY)
-    val client = OkHttpClient.Builder()
+    private val logging = HttpLoggingInterceptor()
+    private val level = logging.setLevel(HttpLoggingInterceptor.Level.BODY)
+    private val client = OkHttpClient.Builder()
         .addInterceptor(level)
         .build()
 

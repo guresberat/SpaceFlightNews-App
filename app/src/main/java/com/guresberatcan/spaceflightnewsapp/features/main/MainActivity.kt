@@ -1,8 +1,7 @@
-package com.guresberatcan.spaceflightnewsapp.ui.activity
+package com.guresberatcan.spaceflightnewsapp.features.main
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import androidx.navigation.ui.AppBarConfiguration
 import com.guresberatcan.spaceflightnewsapp.databinding.ActivityMainBinding
 import dagger.hilt.android.AndroidEntryPoint
 

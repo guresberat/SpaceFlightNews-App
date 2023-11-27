@@ -1,4 +1,4 @@
-package com.guresberatcan.spaceflightnewsapp.ui.fragments
+package com.guresberatcan.spaceflightnewsapp.features.home
 
 import android.os.Bundle
 import android.view.View
@@ -11,8 +11,7 @@ import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.fragment.findNavController
 import com.guresberatcan.spaceflightnewsapp.R
 import com.guresberatcan.spaceflightnewsapp.databinding.FragmentFlightListBinding
-import com.guresberatcan.spaceflightnewsapp.ui.adapter.ArticleListAdapter
-import com.guresberatcan.spaceflightnewsapp.ui.viewmodel.FlightListViewModel
+import com.guresberatcan.spaceflightnewsapp.features.home.adapter.ArticleListAdapter
 import com.guresberatcan.data.util.parcelable
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
@@ -21,9 +20,9 @@ import java.util.TimerTask
 
 
 @AndroidEntryPoint
-class FlightListFragment : Fragment(R.layout.fragment_flight_list) {
+class HomeFragment : Fragment(R.layout.fragment_home) {
 
-    private val viewModel: FlightListViewModel by viewModels()
+    private val viewModel: HomeViewModel by viewModels()
     private var _binding: FragmentFlightListBinding? = null
     private val binding : FragmentFlightListBinding get() = _binding!!
     private var articleAdapter = ArticleListAdapter()

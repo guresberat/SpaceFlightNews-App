@@ -1,14 +1,10 @@
-package com.guresberatcan.spaceflightnewsapp.ui.viewmodel
+package com.guresberatcan.spaceflightnewsapp.features.articledetail
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.guresberatcan.domain.model.Article
-import com.guresberatcan.domain.usecase.GetArticleDataUseCase
-import com.guresberatcan.domain.utils.Resource
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.SharedFlow
-import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 

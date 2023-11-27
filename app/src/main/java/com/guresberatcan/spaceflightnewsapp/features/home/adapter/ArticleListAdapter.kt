@@ -1,4 +1,4 @@
-package com.guresberatcan.spaceflightnewsapp.ui.adapter
+package com.guresberatcan.spaceflightnewsapp.features.home.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -8,11 +8,12 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.guresberatcan.spaceflightnewsapp.R
-import com.guresberatcan.domain.model.Article
 import com.guresberatcan.spaceflightnewsapp.databinding.ItemArticleListBinding
 
 class ArticleListAdapter :
-    ListAdapter<com.guresberatcan.domain.model.Article, ArticleListAdapter.CustomViewHolder>(SampleItemDiffCallback()) {
+    ListAdapter<com.guresberatcan.domain.model.Article, ArticleListAdapter.CustomViewHolder>(
+        SampleItemDiffCallback()
+    ) {
 
     var itemClickListener: ((item: com.guresberatcan.domain.model.Article) -> Unit)? = null
 

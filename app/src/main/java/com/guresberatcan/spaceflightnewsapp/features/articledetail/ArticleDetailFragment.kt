@@ -1,4 +1,4 @@
-package com.guresberatcan.spaceflightnewsapp.ui.fragments
+package com.guresberatcan.spaceflightnewsapp.features.articledetail
 
 import android.os.Bundle
 import android.view.View
@@ -10,15 +10,12 @@ import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.fragment.findNavController
 import com.bumptech.glide.Glide
 import com.guresberatcan.spaceflightnewsapp.R
-import com.guresberatcan.domain.model.Article
 import com.guresberatcan.spaceflightnewsapp.databinding.FragmentSecondBinding
-import com.guresberatcan.spaceflightnewsapp.ui.viewmodel.ArticleDetailViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 
-
 @AndroidEntryPoint
-class SecondFragment : Fragment(R.layout.fragment_second) {
+class ArticleDetailFragment : Fragment(R.layout.fragment_article_detail) {
 
     private var _binding: FragmentSecondBinding? = null
     private val viewModel: ArticleDetailViewModel by viewModels()
