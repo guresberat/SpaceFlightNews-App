@@ -12,33 +12,27 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
-        <FrameLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:elevation="3dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
 
-            <Button
-                android:id="@+id/favouriteButton"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Add to my reading list"
-                />
-        </FrameLayout>
-
-
-        <ImageView
-            android:id="@+id/articleImage"
-            android:layout_width="match_parent"
-            android:layout_height="160dp"
-            android:layout_margin="8dp"
-            android:src="@drawable/ariane_6_hot_fire_test"
-            android:adjustViewBounds="true"
-            android:scaleType="fitCenter"
+        <androidx.cardview.widget.CardView
+            android:id="@+id/articleImageCardView"
+            android:layout_width="250dp"
+            android:layout_height="180dp"
+            app:cardCornerRadius="14dp"
+            android:layout_marginTop="10dp"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent">
+
+            <ImageView
+                android:id="@+id/articleImage"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:adjustViewBounds="true"
+                android:scaleType="fitXY"
+                android:src="@drawable/ariane_6_hot_fire_test" />
+
+        </androidx.cardview.widget.CardView>
+
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -48,7 +42,7 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/articleImage">
+            app:layout_constraintTop_toBottomOf="@id/articleImageCardView">
 
 
             <TextView
@@ -58,6 +52,16 @@
                 android:textColor="#000"
                 android:textSize="19sp"
                 tools:text="The Title of a Article" />
+
+            <TextView
+                android:id="@+id/articleSummary"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:ellipsize="end"
+                android:maxLines="3"
+                android:textSize="15sp"
+                tools:text="This is a summary of the article." />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -87,16 +91,13 @@
 
             </LinearLayout>
 
-            <TextView
-                android:id="@+id/articleSummary"
-                android:layout_width="match_parent"
+            <Button
+                android:id="@+id/favouriteButton"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
                 android:layout_marginTop="10dp"
-                android:ellipsize="end"
-                android:maxLines="3"
-                android:textSize="15sp"
-                tools:text="This is a summary of the article." />
-
+                android:text="Add to my reading list" />
         </LinearLayout>
 
     </androidx.constraintlayout.widget.ConstraintLayout>

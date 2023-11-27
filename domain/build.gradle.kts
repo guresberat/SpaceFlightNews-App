@@ -38,7 +38,4 @@ dependencies {
     // Coroutines Flow
     implementation(libs.coroutines.core)
 
-    implementation(libs.okhttp.interceptor)
-
-    api(libs.kotlin.immutable.collections)
 }

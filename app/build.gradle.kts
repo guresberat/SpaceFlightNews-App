@@ -87,7 +87,6 @@ dependencies {
     implementation(libs.constraintlayout)
     implementation(libs.navigation.fragment.ktx)
     implementation(libs.navigation.ui.ktx)
-    implementation(project(mapOf("path" to ":data")))
 
     //Compose
     implementation(platform(libs.compose.bom))
@@ -100,7 +99,7 @@ dependencies {
     implementation(libs.bundles.room)
     ksp(libs.room.compiler)
 
-    //Fragment -- Needed for lazy viewModel
+    //Fragment
     implementation(libs.fragment.ktx)
 
     //Retrofit
