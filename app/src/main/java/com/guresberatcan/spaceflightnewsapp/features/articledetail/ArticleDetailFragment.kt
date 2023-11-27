@@ -27,7 +27,12 @@ class ArticleDetailFragment : Fragment(R.layout.fragment_article_detail) {
         super.onViewCreated(view, savedInstanceState)
         _binding = FragmentArticleDetailBinding.bind(view)
         initObservers()
-        viewModel.getArticleData(requireArguments().getInt("id"))
+        val articleId = requireArguments().getInt("id",-1)
+        if (articleId == -1) {
+            findNavController().navigateUp()
+        }else{
+            viewModel.getArticleData(articleId)
+        }
 
         binding.toolbar.setNavigationIcon(com.google.android.material.R.drawable.ic_arrow_back_black_24)
         binding.toolbar.title = "Flight Detail"

@@ -7,7 +7,7 @@ import kotlinx.coroutines.flow.Flow
 import javax.inject.Inject
 
 
-class FilterUseCase @Inject constructor(private val repository: com.guresberatcan.domain.repository.ArticleRepository) {
+class FilterUseCase @Inject constructor(private val repository: ArticleRepository) {
 
     operator fun invoke(searchQuery: String): Flow<List<Article>> = repository.filter(searchQuery)
 

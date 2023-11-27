@@ -159,3 +159,11 @@ Tapp/src/main/java/com/guresberatcan/spaceflightnewsapp/features/home/HomeFragme
 Uapp/src/main/java/com/guresberatcan/spaceflightnewsapp/features/home/HomeViewModel.kt,f\7\f72f58fcc33319f1ea2c41140fc2432ddad175bb
 Ñ
 Tapp/src/main/java/com/guresberatcan/spaceflightnewsapp/features/main/MainActivity.kt,2\a\2a550b5c0d48199dda4aee9e30c2d036768bd224
+õ
+kapp/src/test/java/com/guresberatcan/spaceflightnewsapp/features/articledetail/ArticleDetailViewModelTest.kt,d\e\de74f2a4093483c84dbaa595f3f678bab5e6e55b
+w
+Gapp/src/test/java/com/guresberatcan/spaceflightnewsapp/util/BaseTest.kt,e\6\e6e2fad9c3c60d83e0774a40ca55d84e725a363f
+Å
+Qapp/src/test/java/com/guresberatcan/spaceflightnewsapp/util/MainDispatcherRule.kt,f\6\f62ece6803f45e5c45b990c4b426da1a4fac8ecf
+â
+Yapp/src/test/java/com/guresberatcan/spaceflightnewsapp/features/home/HomeViewModelTest.kt,e\d\eddd1d72b2ef6c8c3f5b87cc565b26b9fc729922

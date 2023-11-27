@@ -30,7 +30,7 @@ retrofit = "2.9.0"
 okhttp = "5.0.0-alpha.2"
 
 # Coroutines
-coroutines = "1.6.4"
+coroutines = "1.7.1"
 
 # Room
 room = "2.5.1"
@@ -56,6 +56,7 @@ truth = "1.1.4"
 androidx_test_extensions = "1.1.3"
 androidx_test_core = "2.1.0"
 material = "1.10.0"
+mockk = "1.13.4"
 
 [libraries]
 
@@ -125,6 +126,7 @@ androidx_expresso_core = { module = "androidx.test.espresso:espresso-core", vers
 google_truth = { module = "com.google.truth:truth", version.ref = "truth" }
 androidx_test_core = { module = "androidx.arch.core:core-testing", version.ref = "androidx_test_core" }
 material = { group = "com.google.android.material", name = "material", version.ref = "material" }
+mockk = { module = "io.mockk:mockk", version.ref = "mockk" }
 
 [plugins]
 
