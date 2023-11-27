@@ -9,7 +9,7 @@ import kotlinx.coroutines.flow.Flow
 
 @Dao
 interface ArticleDao {
-    @Query("SELECT * FROM ArticleDatabase")
+    @Query("SELECT * FROM ArticleDatabase ORDER BY id DESC")
     suspend fun getArticles(): List<Article>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
@@ -18,7 +18,7 @@ interface ArticleDao {
     @Query("UPDATE ArticleDatabase SET isFavourite = :isFavourite WHERE id = :id")
     suspend fun updateArticle(id: Int, isFavourite: Boolean)
 
-    @Query("SELECT * FROM ArticleDatabase WHERE title LIKE '%' || :searchQuery || '%' OR summary LIKE '%' || :searchQuery || '%'")
+    @Query("SELECT * FROM ArticleDatabase WHERE title LIKE '%' || :searchQuery || '%' OR summary LIKE '%' || :searchQuery || '%' ORDER BY id DESC")
     fun filter(searchQuery: String): Flow<List<Article>>
 
     @Query("SELECT * FROM ArticleDatabase WHERE id = :id")

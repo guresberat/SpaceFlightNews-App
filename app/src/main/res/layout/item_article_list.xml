@@ -97,7 +97,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
                 android:layout_marginTop="10dp"
-                android:text="Add to my reading list" />
+                android:text="@string/reading_list_add_button_text" />
         </LinearLayout>
 
     </androidx.constraintlayout.widget.ConstraintLayout>

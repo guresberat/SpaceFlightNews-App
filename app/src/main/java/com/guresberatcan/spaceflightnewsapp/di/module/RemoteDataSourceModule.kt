@@ -2,6 +2,7 @@ package com.guresberatcan.spaceflightnewsapp.di.module
 
 import com.google.gson.GsonBuilder
 import com.guresberatcan.data.network.SpaceFlightAPI
+import com.guresberatcan.domain.utils.Constants.BASE_URL
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -34,5 +35,4 @@ object RemoteDataSourceModule {
         .addInterceptor(level)
         .build()
 
-    private const val BASE_URL = "https://api.spaceflightnewsapi.net/v4/"
 }

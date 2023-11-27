@@ -7,17 +7,18 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.guresberatcan.domain.model.Article
 import com.guresberatcan.spaceflightnewsapp.R
 import com.guresberatcan.spaceflightnewsapp.databinding.ItemArticleListBinding
 
 class ArticleListAdapter :
-    ListAdapter<com.guresberatcan.domain.model.Article, ArticleListAdapter.CustomViewHolder>(
+    ListAdapter<Article, ArticleListAdapter.CustomViewHolder>(
         SampleItemDiffCallback()
     ) {
 
-    var itemClickListener: ((item: com.guresberatcan.domain.model.Article) -> Unit)? = null
+    var itemClickListener: ((item: Article) -> Unit)? = null
 
-    var favouriteClickedListener: ((item: com.guresberatcan.domain.model.Article) -> Unit)? = null
+    var favouriteClickedListener: ((item: Article, position: Int) -> Unit)? = null
 
     override fun onCreateViewHolder(parent: ViewGroup, position: Int): CustomViewHolder {
         val binding =
@@ -33,7 +34,7 @@ class ArticleListAdapter :
 
     inner class CustomViewHolder(private val itemBinding: ItemArticleListBinding) :
         RecyclerView.ViewHolder(itemBinding.root) {
-        fun bindTo(article: com.guresberatcan.domain.model.Article) {
+        fun bindTo(article: Article) {
             with(itemBinding) {
                 articleTitle.text = article.title
                 articleSummary.text = article.summary
@@ -42,28 +43,28 @@ class ArticleListAdapter :
                 Glide.with(root.context).load(article.imageUrl)
                     .into(articleImage)
                 if (article.isFavourite) {
-                    favouriteButton.text = "Remove from favourites"
+                    favouriteButton.text =
+                        root.context.getString(R.string.reading_list_remove_button_text)
                 } else {
-                    favouriteButton.text = "Add to favourites"
+                    favouriteButton.text =
+                        root.context.getString(R.string.reading_list_add_button_text)
                 }
-
                 favouriteButton.setOnClickListener {
-                    favouriteClickedListener?.invoke(article)
-
+                    favouriteClickedListener?.invoke(article, this@CustomViewHolder.adapterPosition)
                 }
-            }
-            itemBinding.root.setOnClickListener {
-                itemClickListener?.invoke(article)
+                root.setOnClickListener {
+                    itemClickListener?.invoke(article)
+                }
             }
         }
     }
 
-    class SampleItemDiffCallback : DiffUtil.ItemCallback<com.guresberatcan.domain.model.Article>() {
-        override fun areItemsTheSame(oldItem: com.guresberatcan.domain.model.Article, newItem: com.guresberatcan.domain.model.Article): Boolean {
+    class SampleItemDiffCallback : DiffUtil.ItemCallback<Article>() {
+        override fun areItemsTheSame(oldItem: Article, newItem: Article): Boolean {
             return oldItem.id == newItem.id
         }
 
-        override fun areContentsTheSame(oldItem: com.guresberatcan.domain.model.Article, newItem: com.guresberatcan.domain.model.Article): Boolean =
+        override fun areContentsTheSame(oldItem: Article, newItem: Article): Boolean =
             oldItem == newItem
 
     }

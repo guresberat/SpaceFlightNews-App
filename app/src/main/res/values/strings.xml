@@ -43,4 +43,8 @@
         libero vel nunc consequat, quis tincidunt nisl eleifend. Cras bibendum enim a justo luctus
         vestibulum. Fusce dictum libero quis erat maximus, vitae volutpat diam dignissim.
     </string>
+    <string name="reading_list_add_button_text">Add to my reading list</string>
+    <string name="reading_list_remove_button_text">Remove from favourites</string>
+    <string name="preference_file_key">sharedPref\n</string>
+    <string name="expanded_image_content">Article Image</string>
 </resources>

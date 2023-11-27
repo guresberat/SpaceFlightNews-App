@@ -2,6 +2,8 @@ package com.guresberatcan.spaceflightnewsapp.features.home
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.guresberatcan.domain.model.Article
+import com.guresberatcan.domain.utils.Resource
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.channels.BufferOverflow
@@ -18,10 +20,10 @@ class HomeViewModel @Inject constructor(
     private val filterUseCase: com.guresberatcan.domain.usecase.FilterUseCase
 ) : ViewModel() {
 
-    val articlesSharedFlow: SharedFlow<com.guresberatcan.domain.utils.Resource<List<com.guresberatcan.domain.model.Article>>>
+    val articlesSharedFlow: SharedFlow<Resource<List<Article>>>
         get() = _articlesSharedFlow
     private val _articlesSharedFlow =
-        MutableSharedFlow<com.guresberatcan.domain.utils.Resource<List<com.guresberatcan.domain.model.Article>>>(
+        MutableSharedFlow<Resource<List<Article>>>(
             replay = 1,
             onBufferOverflow = BufferOverflow.DROP_OLDEST
         )
@@ -57,7 +59,7 @@ class HomeViewModel @Inject constructor(
                 false
             }
             filterUseCase(searchQuery).collect {
-                _articlesSharedFlow.emit(com.guresberatcan.domain.utils.Resource.Success(it))
+                _articlesSharedFlow.emit(Resource.Success(it))
             }
         }
     }
