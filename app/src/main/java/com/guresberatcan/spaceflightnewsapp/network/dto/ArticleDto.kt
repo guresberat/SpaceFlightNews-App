@@ -2,6 +2,7 @@ package com.guresberatcan.spaceflightnewsapp.network.dto
 
 import com.google.gson.annotations.SerializedName
 import com.guresberatcan.spaceflightnewsapp.data.model.Article
+import com.guresberatcan.spaceflightnewsapp.utils.convertDate
 
 data class ArticleDto(
     val id: Int? = null,
@@ -24,7 +25,7 @@ fun ArticleDto.toArticle(): Article {
         id = id,
         imageUrl = imageUrl,
         newsSite = newsSite,
-        publishedAt = publishedAt,
+        publishedAt = publishedAt?.convertDate(),
         summary = summary,
         title = title,
         updatedAt = updatedAt,

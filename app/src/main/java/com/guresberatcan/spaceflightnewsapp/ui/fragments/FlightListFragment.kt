@@ -13,6 +13,7 @@ import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.fragment.findNavController
 import com.guresberatcan.spaceflightnewsapp.R
 import com.guresberatcan.spaceflightnewsapp.databinding.FragmentFlightListBinding
+import com.guresberatcan.spaceflightnewsapp.databinding.FragmentSecondBinding
 import com.guresberatcan.spaceflightnewsapp.ui.adapter.ArticleListAdapter
 import com.guresberatcan.spaceflightnewsapp.ui.viewmodel.FlightListViewModel
 import com.guresberatcan.spaceflightnewsapp.utils.Resource
@@ -24,23 +25,17 @@ import java.util.TimerTask
 
 
 @AndroidEntryPoint
-class FlightListFragment : Fragment() {
+class FlightListFragment : Fragment(R.layout.fragment_flight_list) {
 
     private val viewModel: FlightListViewModel by viewModels()
-    private val binding get() = _binding!!
-    private var articleAdapter = ArticleListAdapter()
     private var _binding: FragmentFlightListBinding? = null
-
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View {
-        _binding = FragmentFlightListBinding.inflate(inflater, container, false)
-        return binding.root
-    }
+    private val binding : FragmentFlightListBinding get() = _binding!!
+    private var articleAdapter = ArticleListAdapter()
+    private lateinit var timer : Timer
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        _binding = FragmentFlightListBinding.bind(view)
         initObservers()
         initViews()
         initializeTimer()
@@ -52,7 +47,7 @@ class FlightListFragment : Fragment() {
     }
 
     private fun initializeTimer() {
-        val timer = Timer()
+        timer = Timer()
         val task = object : TimerTask() {
             override fun run() {
                 viewModel.getArticles()
@@ -65,11 +60,18 @@ class FlightListFragment : Fragment() {
         binding.recyclerview.apply {
             adapter = articleAdapter
             articleAdapter.itemClickListener = {
-                findNavController().navigate(R.id.action_FirstFragment_to_SecondFragment)
-                /* Favoruite button is not implemented yet
+                val bundle = Bundle().apply {
+                    it.id?.let { it1 -> putInt("id", it1) }
+                }
+                findNavController().navigate(
+                    R.id.action_FirstFragment_to_SecondFragment,
+                    bundle
+                )
+            }
+            articleAdapter.favouriteClickedListener = {
                 it.isFavourite = it.isFavourite.not()
                 viewModel.updateArticle(it.id, it.isFavourite)
-                */
+                articleAdapter.notifyItemChanged(articleAdapter.currentList.indexOf(it))
             }
         }
         binding.searchBar.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
@@ -108,6 +110,7 @@ class FlightListFragment : Fragment() {
         }
     }
 
+
     override fun onSaveInstanceState(outState: Bundle) {
         super.onSaveInstanceState(outState)
         outState.putParcelable("list", binding.recyclerview.layoutManager?.onSaveInstanceState())
@@ -117,5 +120,6 @@ class FlightListFragment : Fragment() {
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
+        timer.cancel()
     }
 }

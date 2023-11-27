@@ -5,19 +5,35 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_margin="10dp"
-    app:cardCornerRadius="2dp"
+    app:cardCornerRadius="8dp"
     app:cardElevation="10dp"
     app:cardPreventCornerOverlap="false">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
+        <FrameLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:elevation="3dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <Button
+                android:id="@+id/favouriteButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Add to my reading list"
+                />
+        </FrameLayout>
+
 
         <ImageView
             android:id="@+id/articleImage"
             android:layout_width="match_parent"
             android:layout_height="160dp"
             android:layout_margin="8dp"
+            android:src="@drawable/ariane_6_hot_fire_test"
             android:adjustViewBounds="true"
             android:scaleType="fitCenter"
             app:layout_constraintLeft_toLeftOf="parent"
@@ -34,6 +50,7 @@
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toBottomOf="@id/articleImage">
 
+
             <TextView
                 android:id="@+id/articleTitle"
                 android:layout_width="match_parent"
@@ -42,13 +59,33 @@
                 android:textSize="19sp"
                 tools:text="The Title of a Article" />
 
-            <TextView
-                android:id="@+id/newsSite"
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
-                android:textSize="15sp"
-                tools:text="SpaceNews" />
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/newsSite"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="6dp"
+                    android:layout_weight="1"
+                    android:textSize="15sp"
+                    tools:text="SpaceNews" />
+
+                <TextView
+                    android:id="@+id/articlePublishedAt"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="end"
+                    android:layout_weight="1"
+                    android:textAlignment="textEnd"
+                    android:textColor="#000"
+                    android:textSize="15sp"
+                    tools:text="The Title of a Article" />
+
+            </LinearLayout>
 
             <TextView
                 android:id="@+id/articleSummary"

@@ -16,12 +16,12 @@ class ArticleListAdapter :
 
     var itemClickListener: ((item: Article) -> Unit)? = null
 
+    var favouriteClickedListener: ((item: Article) -> Unit)? = null
 
     override fun onCreateViewHolder(parent: ViewGroup, position: Int): CustomViewHolder {
         val binding =
             ItemArticleListBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         return CustomViewHolder(binding)
-
     }
 
     override fun onBindViewHolder(holder: CustomViewHolder, position: Int) {
@@ -37,8 +37,19 @@ class ArticleListAdapter :
                 articleTitle.text = article.title
                 articleSummary.text = article.summary
                 newsSite.text = article.newsSite
+                articlePublishedAt.text = article.publishedAt
                 Glide.with(root.context).load(article.imageUrl)
                     .into(articleImage)
+                if (article.isFavourite) {
+                    favouriteButton.text = "Remove from favourites"
+                } else {
+                    favouriteButton.text = "Add to favourites"
+                }
+
+                favouriteButton.setOnClickListener {
+                    favouriteClickedListener?.invoke(article)
+
+                }
             }
             itemBinding.root.setOnClickListener {
                 itemClickListener?.invoke(article)
@@ -47,8 +58,9 @@ class ArticleListAdapter :
     }
 
     class SampleItemDiffCallback : DiffUtil.ItemCallback<Article>() {
-        override fun areItemsTheSame(oldItem: Article, newItem: Article): Boolean =
-            oldItem.id == newItem.id
+        override fun areItemsTheSame(oldItem: Article, newItem: Article): Boolean {
+            return oldItem.id == newItem.id
+        }
 
         override fun areContentsTheSame(oldItem: Article, newItem: Article): Boolean =
             oldItem == newItem

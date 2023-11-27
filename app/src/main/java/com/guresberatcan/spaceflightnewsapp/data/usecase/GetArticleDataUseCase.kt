@@ -6,8 +6,8 @@ import com.guresberatcan.spaceflightnewsapp.utils.Resource
 import kotlinx.coroutines.flow.Flow
 import javax.inject.Inject
 
-class GetArticlesUseCase @Inject constructor(private val repository: ArticleRepository) {
+class GetArticleDataUseCase @Inject constructor(private val repository: ArticleRepository) {
 
-    suspend operator fun invoke(): Resource<List<Article>> = repository.getArticles()
+    operator fun invoke(id : Int): Flow<Article> = repository.getArticleData(id)
 
 }

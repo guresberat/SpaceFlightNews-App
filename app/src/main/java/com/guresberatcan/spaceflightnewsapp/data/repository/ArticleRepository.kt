@@ -5,9 +5,11 @@ import com.guresberatcan.spaceflightnewsapp.utils.Resource
 import kotlinx.coroutines.flow.Flow
 
 interface ArticleRepository {
-    fun getArticles(): Flow<Resource<List<Article>>>
+    suspend fun getArticles(): Resource<List<Article>>
     suspend fun updateArticle(id: Int, isFavourite: Boolean)
 
     fun filter(searchQuery: String): Flow<List<Article>>
+
+    fun getArticleData(id: Int): Flow<Article>
 
 }

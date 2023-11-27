@@ -1,5 +1,7 @@
 package com.guresberatcan.spaceflightnewsapp.ui.viewmodel
 
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.guresberatcan.spaceflightnewsapp.data.model.Article
@@ -9,6 +11,7 @@ import com.guresberatcan.spaceflightnewsapp.data.usecase.UpdateArticleUseCase
 import com.guresberatcan.spaceflightnewsapp.utils.Resource
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Job
+import kotlinx.coroutines.channels.BufferOverflow
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.SharedFlow
@@ -25,7 +28,11 @@ class FlightListViewModel @Inject constructor(
     val articlesSharedFlow: SharedFlow<Resource<List<Article>>>
         get() = _articlesSharedFlow
     private val _articlesSharedFlow =
-        MutableSharedFlow<Resource<List<Article>>>(extraBufferCapacity = 1)
+        MutableSharedFlow<Resource<List<Article>>>(
+            replay = 1,
+            onBufferOverflow = BufferOverflow.DROP_OLDEST
+        )
+
 
     private lateinit var textChangeCountDownJob: Job
 
@@ -34,10 +41,10 @@ class FlightListViewModel @Inject constructor(
 
 
     fun getArticles() = viewModelScope.launch {
-        getArticlesUseCase().collect {
-            if (!isSearchOpened) {
-                _articlesSharedFlow.emit(it)
-            }
+
+        if (!isSearchOpened) {
+            val list = getArticlesUseCase()
+            _articlesSharedFlow.emit(list)
         }
     }
 
