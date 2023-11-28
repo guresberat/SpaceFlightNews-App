@@ -17,8 +17,8 @@
             android:id="@+id/articleImageCardView"
             android:layout_width="250dp"
             android:layout_height="180dp"
-            app:cardCornerRadius="14dp"
             android:layout_marginTop="10dp"
+            app:cardCornerRadius="14dp"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toTopOf="parent">
@@ -28,11 +28,10 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:adjustViewBounds="true"
-                android:scaleType="fitXY"
-                android:contentDescription="@string/expanded_image_content" />
+                android:contentDescription="@string/expanded_image_content"
+                android:scaleType="fitXY" />
 
         </androidx.cardview.widget.CardView>
-
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -44,12 +43,11 @@
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toBottomOf="@id/articleImageCardView">
 
-
             <TextView
                 android:id="@+id/articleTitle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textColor="#000"
+                android:fontFamily="@font/archivo_bold"
                 android:textSize="19sp"
                 tools:text="The Title of a Article" />
 
@@ -59,6 +57,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
                 android:ellipsize="end"
+                android:fontFamily="@font/archivo"
                 android:maxLines="3"
                 android:textSize="15sp"
                 tools:text="This is a summary of the article." />
@@ -75,7 +74,9 @@
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="6dp"
                     android:layout_weight="1"
+                    android:fontFamily="@font/archivo_bold"
                     android:textSize="15sp"
+
                     tools:text="SpaceNews" />
 
                 <TextView
@@ -84,9 +85,10 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="end"
                     android:layout_weight="1"
+                    android:fontFamily="@font/archivo_bold"
                     android:textAlignment="textEnd"
-                    android:textColor="#000"
                     android:textSize="15sp"
+
                     tools:text="The Title of a Article" />
 
             </LinearLayout>
@@ -97,7 +99,10 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
                 android:layout_marginTop="10dp"
-                android:text="@string/reading_list_add_button_text" />
+                android:backgroundTint="@color/mustard"
+                android:fontFamily="@font/archivo"
+                android:text="@string/reading_list_add_button_text"
+                android:textColor="@color/black" />
         </LinearLayout>
 
     </androidx.constraintlayout.widget.ConstraintLayout>

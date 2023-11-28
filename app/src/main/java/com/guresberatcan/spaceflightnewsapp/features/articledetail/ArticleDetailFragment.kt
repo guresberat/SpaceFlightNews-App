@@ -82,7 +82,9 @@ class ArticleDetailFragment : Fragment(R.layout.fragment_article_detail) {
             Glide.with(requireActivity()).load(article.imageUrl)
                 .into(expandedImage)
             toolbarLayout.title = article.title
-            textviewSecond.text = article.summary
+            articleSummary.text = article.summary
+            newsSite.text = article.newsSite
+            articlePublishedAt.text = article.publishedAt
         }
     }
 

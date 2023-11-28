@@ -19,6 +19,7 @@
             android:layout_height="250dp"
             android:fitsSystemWindows="true"
             app:contentScrim="?attr/colorPrimary"
+            app:expandedTitleTextAppearance="@style/TextAppearance.MaterialComponents.Headline6"
             app:expandedTitleTextColor="@color/white"
             app:layout_scrollFlags="scroll|exitUntilCollapsed"
             app:maxLines="2">
@@ -35,7 +36,7 @@
                 android:id="@+id/toolbar"
                 android:layout_width="match_parent"
                 android:layout_height="?attr/actionBarSize"
-                android:navigationIcon="@drawable/ic_arrow_back_black"
+                android:navigationIcon="@drawable/ic_back"
                 app:layout_collapseMode="pin" />
 
         </com.google.android.material.appbar.CollapsingToolbarLayout>
@@ -48,22 +49,53 @@
         app:layout_behavior="@string/appbar_scrolling_view_behavior"
         tools:context=".features.home.HomeFragment">
 
-        <androidx.constraintlayout.widget.ConstraintLayout
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:orientation="vertical"
             android:padding="16dp">
 
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/newsSite"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="6dp"
+                    android:layout_weight="1"
+                    android:fontFamily="@font/archivo_bold"
+                    android:textSize="15sp"
+                    tools:text="SpaceNews" />
+
+                <TextView
+                    android:id="@+id/articlePublishedAt"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="end"
+                    android:layout_weight="1"
+                    android:fontFamily="@font/archivo_bold"
+                    android:textAlignment="textEnd"
+                    android:textSize="15sp"
+                    tools:text="The Title of a Article" />
+
+            </LinearLayout>
+
             <TextView
-                android:id="@+id/textview_second"
+                android:id="@+id/articleSummary"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
+                android:fontFamily="@font/archivo"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 tools:text="@string/lorem_ipsum" />
-        </androidx.constraintlayout.widget.ConstraintLayout>
+        </LinearLayout>
 
     </androidx.core.widget.NestedScrollView>
 
