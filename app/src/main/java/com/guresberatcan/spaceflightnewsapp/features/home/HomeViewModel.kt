@@ -6,6 +6,7 @@ import com.guresberatcan.domain.model.Article
 import com.guresberatcan.domain.usecase.FilterUseCase
 import com.guresberatcan.domain.usecase.GetArticlesUseCase
 import com.guresberatcan.domain.usecase.UpdateArticleUseCase
+import com.guresberatcan.domain.utils.Constants.SEARCH_DELAY_MILLIS
 import com.guresberatcan.domain.utils.Resource
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Job
@@ -67,7 +68,7 @@ class HomeViewModel @Inject constructor(
 
         textChangeCountDownJob = launch {
             isSearchOpened = if (searchQuery.isNotEmpty()) {
-                delay(800) // introduce a delay to avoid rapid updates during typing
+                delay(SEARCH_DELAY_MILLIS) // introduce a delay to avoid rapid updates during typing
                 true
             } else {
                 false

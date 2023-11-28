@@ -5,4 +5,5 @@ object Constants {
     const val RECYCLERVIEW_INSTANCE_STATE = "recyclerview_instance_state"
     const val BUNDLE_ARTICLE_ID = "id"
     const val DATABASE_NAME = "spaceflight_news_db"
+    const val SEARCH_DELAY_MILLIS = 800L
 }

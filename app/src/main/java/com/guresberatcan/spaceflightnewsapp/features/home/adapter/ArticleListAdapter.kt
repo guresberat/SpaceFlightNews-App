@@ -13,7 +13,7 @@ import com.guresberatcan.spaceflightnewsapp.databinding.ItemArticleListBinding
 
 class ArticleListAdapter :
     ListAdapter<Article, ArticleListAdapter.CustomViewHolder>(
-        SampleItemDiffCallback()
+        ItemDiffCallback()
     ) {
 
     var itemClickListener: ((item: Article) -> Unit)? = null
@@ -59,7 +59,7 @@ class ArticleListAdapter :
         }
     }
 
-    class SampleItemDiffCallback : DiffUtil.ItemCallback<Article>() {
+    class ItemDiffCallback : DiffUtil.ItemCallback<Article>() {
         override fun areItemsTheSame(oldItem: Article, newItem: Article): Boolean {
             return oldItem.id == newItem.id
         }
