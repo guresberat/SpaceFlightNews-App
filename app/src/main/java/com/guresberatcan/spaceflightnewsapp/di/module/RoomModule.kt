@@ -15,6 +15,13 @@ import javax.inject.Singleton
 @InstallIn(SingletonComponent::class)
 @Module
 object RoomModule {
+
+    /**
+     * Provides a singleton instance of the ArticleDatabase using Room.
+     *
+     * @param context The application context.
+     * @return Singleton instance of ArticleDatabase.
+     */
     @Singleton
     @Provides
     fun provideArticleDatabase(@ApplicationContext context: Context): ArticleDatabase {
@@ -27,6 +34,12 @@ object RoomModule {
             .build()
     }
 
+    /**
+     * Provides a singleton instance of the ArticleDao for local data access.
+     *
+     * @param articleDatabase The ArticleDatabase instance.
+     * @return Singleton instance of ArticleDao.
+     */
     @Singleton
     @Provides
     fun provideArticleDao(articleDatabase: ArticleDatabase): ArticleDao {

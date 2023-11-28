@@ -31,12 +31,17 @@ class HomeViewModel @Inject constructor(
             onBufferOverflow = BufferOverflow.DROP_OLDEST
         )
 
+    // Job to handle delayed execution during text input for filtering
     private lateinit var textChangeCountDownJob: Job
 
-    //to prevent refresh while search is open
+    // Flag to prevent refreshing articles while search is ongoing
     private var isSearchOpened = false
 
 
+    /**
+     * Fetches articles from the use case and emits them to the shared flow,
+     * unless the search is ongoing (isSearchOpened is true).
+     */
     fun getArticles() = viewModelScope.launch {
 
         if (!isSearchOpened) {
@@ -45,17 +50,24 @@ class HomeViewModel @Inject constructor(
         }
     }
 
+    /**
+     * Updates the favorite status of an article.
+     */
     fun updateArticle(article: Int?, favourite: Boolean) = viewModelScope.launch {
         article?.let { updateArticleUseCase(it, favourite) }
     }
 
+    /**
+     * Filters articles based on the provided search query and emits the filtered list
+     * to the shared flow after a delay, preventing rapid updates during typing.
+     */
     fun filter(searchQuery: String) = viewModelScope.launch {
         if (::textChangeCountDownJob.isInitialized)
             textChangeCountDownJob.cancel()
 
         textChangeCountDownJob = launch {
             isSearchOpened = if (searchQuery.isNotEmpty()) {
-                delay(800)
+                delay(800) // introduce a delay to avoid rapid updates during typing
                 true
             } else {
                 false

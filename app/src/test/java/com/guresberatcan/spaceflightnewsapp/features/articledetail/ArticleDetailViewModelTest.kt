@@ -41,7 +41,7 @@ class ArticleDetailViewModelTest : BaseTest() {
         val expected = mutableListOf<Article>()
 
         val job = launch {
-            viewModel.articlesSharedFlow.toList(expected)
+            viewModel.articleSharedFlow.toList(expected)
         }
         viewModel.getArticleData(1)
 

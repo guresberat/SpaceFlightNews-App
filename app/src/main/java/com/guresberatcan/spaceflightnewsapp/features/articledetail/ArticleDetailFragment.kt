@@ -23,31 +23,37 @@ import kotlinx.coroutines.launch
 class ArticleDetailFragment : Fragment(R.layout.fragment_article_detail) {
 
     private var _binding: FragmentArticleDetailBinding? = null
+    private val binding: FragmentArticleDetailBinding get() = _binding!!
 
     private val viewModel: ArticleDetailViewModel by viewModels()
-    private val binding: FragmentArticleDetailBinding get() = _binding!!
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         _binding = FragmentArticleDetailBinding.bind(view)
+        // Initialize observers and listeners
         initObservers()
         initListeners()
     }
 
     private fun initListeners() {
+        // Retrieve article ID from arguments
         val articleId = requireArguments().getInt(BUNDLE_ARTICLE_ID, -1)
+        // If article ID is not valid, navigate back to the FirstFragment
         if (articleId == -1) {
             findNavController().navigate(R.id.action_SecondFragment_to_FirstFragment)
         } else {
+            // Fetch article data based on the provided ID
             viewModel.getArticleData(articleId)
         }
 
+        // Retrieve RecyclerView instance state data from arguments
         val positionData = try {
             requireArguments().parcelable<Parcelable>(RECYCLERVIEW_INSTANCE_STATE)
         } catch (e: Exception) {
             null
         }
 
+        // Set up navigation back to the HomeFragment when the navigation icon is clicked
         binding.toolbar.setNavigationOnClickListener {
             findNavController().navigate(
                 R.id.action_SecondFragment_to_FirstFragment,
@@ -57,6 +63,7 @@ class ArticleDetailFragment : Fragment(R.layout.fragment_article_detail) {
         }
     }
 
+    // Initialize observers to update the UI with fetched article data
     private fun initObservers() {
         lifecycleScope.launch {
             viewLifecycleOwner.lifecycle.repeatOnLifecycle(Lifecycle.State.STARTED) {
@@ -69,6 +76,7 @@ class ArticleDetailFragment : Fragment(R.layout.fragment_article_detail) {
         }
     }
 
+    // Set the fetched article data to the corresponding views in the layout
     private fun setViewData(article: Article) {
         with(binding) {
             Glide.with(requireActivity()).load(article.imageUrl)
@@ -78,7 +86,7 @@ class ArticleDetailFragment : Fragment(R.layout.fragment_article_detail) {
         }
     }
 
-
+    // Clean up resources when the view is destroyed
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null

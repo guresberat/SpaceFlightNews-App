@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.os.Parcelable
 import android.view.View
 import android.widget.SearchView
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
@@ -31,7 +32,10 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
 
     private var articleAdapter = ArticleListAdapter()
 
+    // Timer for periodic article fetching
     private lateinit var timer: Timer
+
+    // Flag to determine if it's the first time the fragment is opened
     private var isFirstOpen = true
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -41,11 +45,13 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
         initViews()
     }
 
+    // Initialize the timer when the fragment is resumed
     override fun onResume() {
         super.onResume()
         initializeTimer()
     }
 
+    // Schedule a task to fetch articles periodically
     private fun initializeTimer() {
         timer = Timer()
         val task = object : TimerTask() {
@@ -56,9 +62,12 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
         timer.scheduleAtFixedRate(task, FETCH_DELAY_MILLIS, FETCH_PERIOD_MILLIS)
     }
 
+    // Initialize views and set up listeners
     private fun initViews() {
         binding.recyclerview.apply {
+            // Set up the RecyclerView and its adapter
             adapter = articleAdapter
+            // Set click listeners for article and favorite button
             articleAdapter.itemClickListener = { article ->
                 Bundle().apply {
                     article.id?.let { putInt(BUNDLE_ARTICLE_ID, it) }
@@ -73,6 +82,7 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
                     )
                 }
             }
+            // Toggle favorite status and update the database
             articleAdapter.favouriteClickedListener = { article, position ->
                 article.isFavourite = article.isFavourite.not()
                 viewModel.updateArticle(article.id, article.isFavourite)
@@ -80,6 +90,7 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
             }
         }
 
+        // Set up the SearchView
         binding.searchBar.clearFocus()
         binding.searchBar.setOnClickListener {
             binding.searchBar.isIconified = false
@@ -92,6 +103,7 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
 
             override fun onQueryTextChange(newText: String?): Boolean {
                 newText?.let {
+                    // Trigger article filtering based on the search query
                     viewModel.filter(it)
                 }
                 return false
@@ -99,6 +111,7 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
         })
     }
 
+    // Scroll to the saved position if it's the first time the fragment is opened
     private fun scrollToPosition() {
         if (isFirstOpen) {
             try {
@@ -114,19 +127,28 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
         }
     }
 
+    // Set up observers to react to changes in the ViewModel's SharedFlow
     private fun initObservers() {
         lifecycleScope.launch {
+            // Observe the articlesSharedFlow with lifecycle awareness
             viewLifecycleOwner.lifecycle.repeatOnLifecycle(Lifecycle.State.STARTED) {
                 launch {
                     viewModel.articlesSharedFlow.collect {
                         when (it) {
                             is com.guresberatcan.domain.utils.Resource.Success -> {
+                                // Update the RecyclerView with the new list of articles
                                 it.data?.let { it1 -> articleAdapter.submitList(it1) }
+                                // Scroll to the saved position if it's the first time the fragment is opened
                                 scrollToPosition()
                             }
 
                             is com.guresberatcan.domain.utils.Resource.Error -> {
-                                //Handle error
+                                // Show a toast message in case of an error
+                                Toast.makeText(
+                                    requireContext(),
+                                    it.errorMessage,
+                                    Toast.LENGTH_SHORT
+                                ).show()
                             }
                         }
                     }
@@ -135,13 +157,16 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
         }
     }
 
+    // Clean up resources when the view is destroyed
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
+        // Cancel the timer to stop periodic article fetching
         timer.cancel()
     }
 
     companion object {
+        // Constants for article fetching interval
         const val FETCH_PERIOD_MILLIS = 60000L
         const val FETCH_DELAY_MILLIS = 1L
     }

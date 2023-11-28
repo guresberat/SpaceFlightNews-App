@@ -149,3 +149,9 @@ Qapp/src/test/java/com/guresberatcan/spaceflightnewsapp/util/MainDispatcherRule.
 Yapp/src/test/java/com/guresberatcan/spaceflightnewsapp/features/home/HomeViewModelTest.kt,e\d\eddd1d72b2ef6c8c3f5b87cc565b26b9fc729922
 p
 @domain/src/main/java/com/guresberatcan/domain/utils/Constants.kt,d\1\d1d74f1f0cc198940a1995e21071c9792cbdffd5
+|
+Ldata/src/main/java/com/guresberatcan/data/util/NetworkConnectivityManager.kt,2\5\25d543b48af7d46b23774c09e6c0085e03ff9e23
+L
+SpaceFlightNewsApp/README.md,9\3\93f9d9c75d6c74841a23434cfa8b41489a990e87
+9
+	README.md,8\e\8ec9a00bfd09b3190ac6b22251dbb1aa95a0579d

@@ -17,20 +17,35 @@ import javax.inject.Singleton
 @Module
 object RemoteDataSourceModule {
 
+    /**
+     * Provides a singleton instance of the SpaceFlightAPI interface for remote data access.
+     *
+     * @return Singleton instance of SpaceFlightAPI.
+     */
     @Singleton
     @Provides
     fun provideRemoteDataSource(): SpaceFlightAPI {
+        // Create a Gson instance
         val gson = GsonBuilder()
             .create()
+
+        // Create a Retrofit instance with the specified base URL, Gson converter, and OkHttpClient
         val retrofit = Retrofit.Builder()
             .baseUrl(BASE_URL)
             .addConverterFactory(GsonConverterFactory.create(gson))
             .client(client)
+
+        // Build and return the SpaceFlightAPI instance
         return retrofit.build().create(SpaceFlightAPI::class.java)
     }
 
+    // Create a logging interceptor for HTTP request/response logging
     private val logging = HttpLoggingInterceptor()
+
+    // Set the logging level to include request and response details
     private val level = logging.setLevel(HttpLoggingInterceptor.Level.BODY)
+
+    // Create an OkHttpClient with the logging interceptor
     private val client = OkHttpClient.Builder()
         .addInterceptor(level)
         .build()
