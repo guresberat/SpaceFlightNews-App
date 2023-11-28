@@ -2,8 +2,9 @@ package com.guresberatcan.domain.model
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey
+import com.guresberatcan.domain.utils.Constants
 
-@Entity(tableName = "ArticleDatabase")
+@Entity(tableName = Constants.DATABASE_NAME)
 data class Article(
     @PrimaryKey(autoGenerate = false)
     val id: Int? = null,

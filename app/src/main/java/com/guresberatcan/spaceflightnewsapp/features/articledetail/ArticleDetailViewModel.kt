@@ -2,6 +2,7 @@ package com.guresberatcan.spaceflightnewsapp.features.articledetail
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.guresberatcan.domain.usecase.GetArticleDataUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.channels.BufferOverflow
 import kotlinx.coroutines.flow.MutableSharedFlow
@@ -11,7 +12,7 @@ import javax.inject.Inject
 
 @HiltViewModel
 class ArticleDetailViewModel @Inject constructor(
-    private val getArticleDataUseCase: com.guresberatcan.domain.usecase.GetArticleDataUseCase
+    private val getArticleDataUseCase: GetArticleDataUseCase
 ) : ViewModel() {
 
     val articleSharedFlow: SharedFlow<com.guresberatcan.domain.model.Article>

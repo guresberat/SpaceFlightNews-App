@@ -29,7 +29,7 @@
                 android:layout_height="match_parent"
                 android:adjustViewBounds="true"
                 android:scaleType="fitXY"
-                android:src="@drawable/ariane_6_hot_fire_test" />
+                android:contentDescription="@string/expanded_image_content" />
 
         </androidx.cardview.widget.CardView>
 

@@ -11,6 +11,7 @@ import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.fragment.findNavController
 import com.bumptech.glide.Glide
 import com.guresberatcan.data.util.parcelable
+import com.guresberatcan.domain.model.Article
 import com.guresberatcan.domain.utils.Constants.BUNDLE_ARTICLE_ID
 import com.guresberatcan.domain.utils.Constants.RECYCLERVIEW_INSTANCE_STATE
 import com.guresberatcan.spaceflightnewsapp.R
@@ -68,7 +69,7 @@ class ArticleDetailFragment : Fragment(R.layout.fragment_article_detail) {
         }
     }
 
-    private fun setViewData(article: com.guresberatcan.domain.model.Article) {
+    private fun setViewData(article: Article) {
         with(binding) {
             Glide.with(requireActivity()).load(article.imageUrl)
                 .into(expandedImage)

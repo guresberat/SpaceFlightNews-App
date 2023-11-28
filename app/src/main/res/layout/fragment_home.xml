@@ -22,12 +22,11 @@
 
     </com.google.android.material.appbar.AppBarLayout>
 
-    <androidx.appcompat.widget.SearchView
+    <SearchView
         android:id="@+id/searchBar"
-        style="@style/ThemeOverlay.Material3.Search"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="test"
+        app:defaultQueryHint="test"
         app:iconifiedByDefault="false"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

@@ -13,7 +13,10 @@ fun String.convertDate(): String {
         )
         parsedDate.format(DateTimeFormatter.ofPattern("HH:mm - dd.MM.yyyy"))
     } else {
-        val outFormat = SimpleDateFormat("dd MM", Locale.getDefault())
-        outFormat.format(this)
+        val inputFormat = SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss", Locale.getDefault())
+        val outputFormat = SimpleDateFormat("HH:mm - dd.MM.yyyy", Locale.getDefault())
+
+        val date = inputFormat.parse(this)
+        return date?.let { outputFormat.format(it) } ?: this
     }
 }

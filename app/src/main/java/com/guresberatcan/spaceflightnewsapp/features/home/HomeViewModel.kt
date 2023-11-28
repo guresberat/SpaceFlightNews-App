@@ -3,6 +3,9 @@ package com.guresberatcan.spaceflightnewsapp.features.home
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.guresberatcan.domain.model.Article
+import com.guresberatcan.domain.usecase.FilterUseCase
+import com.guresberatcan.domain.usecase.GetArticlesUseCase
+import com.guresberatcan.domain.usecase.UpdateArticleUseCase
 import com.guresberatcan.domain.utils.Resource
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Job
@@ -15,9 +18,9 @@ import javax.inject.Inject
 
 @HiltViewModel
 class HomeViewModel @Inject constructor(
-    private val getArticlesUseCase: com.guresberatcan.domain.usecase.GetArticlesUseCase,
-    private val updateArticleUseCase: com.guresberatcan.domain.usecase.UpdateArticleUseCase,
-    private val filterUseCase: com.guresberatcan.domain.usecase.FilterUseCase
+    private val getArticlesUseCase: GetArticlesUseCase,
+    private val updateArticleUseCase: UpdateArticleUseCase,
+    private val filterUseCase: FilterUseCase
 ) : ViewModel() {
 
     val articlesSharedFlow: SharedFlow<Resource<List<Article>>>
@@ -27,7 +30,6 @@ class HomeViewModel @Inject constructor(
             replay = 1,
             onBufferOverflow = BufferOverflow.DROP_OLDEST
         )
-
 
     private lateinit var textChangeCountDownJob: Job
 

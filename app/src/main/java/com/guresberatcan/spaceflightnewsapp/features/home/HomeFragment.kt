@@ -3,7 +3,7 @@ package com.guresberatcan.spaceflightnewsapp.features.home
 import android.os.Bundle
 import android.os.Parcelable
 import android.view.View
-import androidx.appcompat.widget.SearchView
+import android.widget.SearchView
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
@@ -78,6 +78,11 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
                 viewModel.updateArticle(article.id, article.isFavourite)
                 articleAdapter.notifyItemChanged(position)
             }
+        }
+
+        binding.searchBar.clearFocus()
+        binding.searchBar.setOnClickListener {
+            binding.searchBar.isIconified = false
         }
 
         binding.searchBar.setOnQueryTextListener(object : SearchView.OnQueryTextListener {

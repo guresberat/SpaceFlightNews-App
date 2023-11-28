@@ -4,6 +4,7 @@ import android.content.Context
 import androidx.room.Room
 import com.guresberatcan.data.dao.ArticleDao
 import com.guresberatcan.data.database.ArticleDatabase
+import com.guresberatcan.domain.utils.Constants
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -20,7 +21,7 @@ object RoomModule {
         return Room.databaseBuilder(
             context,
             ArticleDatabase::class.java,
-            ArticleDatabase.DATABASE_NAME
+            Constants.DATABASE_NAME
         )
             .fallbackToDestructiveMigration()
             .build()

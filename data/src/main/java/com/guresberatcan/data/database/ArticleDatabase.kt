@@ -9,7 +9,4 @@ import com.guresberatcan.domain.model.Article
 abstract class ArticleDatabase : RoomDatabase() {
     abstract fun articleDao(): ArticleDao
 
-    companion object {
-        const val DATABASE_NAME = "ArticleDatabase"
-    }
 }

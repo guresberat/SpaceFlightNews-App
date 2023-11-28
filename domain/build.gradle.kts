@@ -1,4 +1,4 @@
-@file:Suppress("DSL_SCOPE_VIOLATION", "UnstableApiUsage")
+@file:Suppress("DSL_SCOPE_VIOLATION")
 
 plugins {
     id("java-library")

@@ -2,7 +2,6 @@ package com.guresberatcan.domain.usecase
 
 import com.guresberatcan.domain.model.Article
 import com.guresberatcan.domain.repository.ArticleRepository
-import com.guresberatcan.domain.utils.Resource
 import kotlinx.coroutines.flow.Flow
 import javax.inject.Inject
 
